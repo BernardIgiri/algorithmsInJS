@@ -16,8 +16,8 @@ function wordCountEngine(text) {
 	sorted.sort(function (a,b){ return b.c - a.c; });
 	var out = {};
 	for (var i=0;i<sorted.length;i++) {
-		var e = sorted[i];
-		out[e.w] = e.c;
+		var entry = sorted[i];
+		out[entry.w] = entry.c;
 	}
 	return out;
 }
