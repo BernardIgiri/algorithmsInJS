@@ -1,0 +1,27 @@
+class Pramp {
+   public static void main(String[] args) {
+      String pramp = "Practice Makes Perfect";
+      System.out.println(pramp);
+   }
+   
+   public Map<String, String> flattenDictionary(Map<String, Object> dictionary) {
+      Map<String, String> output = new HashMap<>();
+      flatten(output, dictionary, "");
+      return output;
+   }
+   
+   private flatten(Map<String, String> output, Map<String, Object> dictionary, String key) {
+      if (!key.equals("")) {
+         key+=".";
+      }
+      for (k:dictionary.keySet()) {
+         Object value = dictionary.get(k);
+         key += k;
+         if (value instanceOf Map) {
+            flatten(output, value, key);
+         } else {
+            output.put(key, value);
+         }
+      }
+   }
+}

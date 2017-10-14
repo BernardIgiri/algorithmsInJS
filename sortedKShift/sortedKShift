@@ -1,0 +1,71 @@
+function sortedArrayKShift(array) {
+    var iMin = 0, iMax = array.length -1;
+   while (iMin <= iMax) {
+      var iMid = Math.floor((iMax - iMin)/2) +iMin;
+      var left = array[iMid];
+      var right = array[iMid];
+      var midValue = array[iMid];
+      if (iMid > 0) {
+         var left = array[iMid-1];
+      }
+      if (iMid < iMax) {
+         var right = array[iMid+1];
+      }
+      if (midValue < left) {
+         return iMid;
+      } else if (midValue > right) {
+         return iMid +1;
+      }
+      var firstValue = array[iMin];
+      var lastValue = array[iMax];
+      if (midValue < firstValue) {
+         iMax = iMid -1;
+      } else {
+         iMin = iMid +1;
+      }
+   }
+   return 0;
+}
+
+function shiftedArrSearch(shiftArr, num):
+   originalFirst = getOrigFirst(shiftArr)
+   if num >= shiftArr[0]:
+      arr = shiftArr.subArr(0, originalFirst-1)
+      return binarySerach(arr, num)
+   else:
+      n = length(shiftArr)
+      arr = shiftArr.subArr(originalFirst-1, n-1)
+      return binarySearch(arr, num)
+
+function getOrigFirst(arr):
+   begin = 0
+   end = length(arr)
+   while (begin <= end):
+      mid = round((begin+end)/2)
+      if (mid == 0 or arr[mid] < arr[mid-1]):
+         return mid
+      if arr[mid] > arr[0]:
+         begin = mid + 1
+      else:
+         end = mid - 1
+   return 0
+   
+
+   
+function findIndexOfSmallest(arr) {
+  let beg = 0;
+  let end = arr.length - 1;
+
+  while (beg <= end) {
+    var mid = Math.floor((beg + end) / 2);
+    if (arr[mid] < arr[mid - 1]) {
+      return mid;
+    } else if (arr[mid] > arr[end]) {
+      beg = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+
+  return 0;
+}

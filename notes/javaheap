@@ -1,0 +1,290 @@
+
+logo
+Home
+About
+Bangalore Training
+Online Training
+Testimonials
+Internship
+Developers
+Contact
+
+Search …
+ 
+« Prev Page Next Page »
+Java Program to Implement Min Heap
+
+This Java program is to implement Min heap. A Heap data structure is a Tree based data structure that satisfies the HEAP Property “If A is a parent node of B then key(A) is ordered with respect to key(B) with the same ordering applying across the heap.”
+So in a Min Heap this property will be “If A is a parent node of B then key(A) is less than key(B) with the same ordering applying across the heap.” and in a max heap the key(A) will be greater than Key(B).
+Here is the source code of the Java program to implement Min heap. The Java program is successfully compiled and run on a Linux system. The program output is also shown below.
+
+public class MinHeap
+{
+    private int[] Heap;
+    private int size;
+    private int maxsize;
+ 
+    private static final int FRONT = 1;
+ 
+    public MinHeap(int maxsize)
+    {
+        this.maxsize = maxsize;
+        this.size = 0;
+        Heap = new int[this.maxsize + 1];
+        Heap[0] = Integer.MIN_VALUE;
+    }
+ 
+    private int parent(int pos)
+    {
+        return pos / 2;
+    }
+ 
+    private int leftChild(int pos)
+    {
+        return (2 * pos);
+    }
+ 
+    private int rightChild(int pos)
+    {
+        return (2 * pos) + 1;
+    }
+ 
+    private boolean isLeaf(int pos)
+    {
+        if (pos >=  (size / 2)  &&  pos <= size)
+        { 
+            return true;
+        }
+        return false;
+    }
+ 
+    private void swap(int fpos, int spos)
+    {
+        int tmp;
+        tmp = Heap[fpos];
+        Heap[fpos] = Heap[spos];
+        Heap[spos] = tmp;
+    }
+ 
+    private void minHeapify(int pos)
+    {
+        if (!isLeaf(pos))
+        { 
+            if ( Heap[pos] > Heap[leftChild(pos)]  || Heap[pos] > Heap[rightChild(pos)])
+            {
+                if (Heap[leftChild(pos)] < Heap[rightChild(pos)])
+                {
+                    swap(pos, leftChild(pos));
+                    minHeapify(leftChild(pos));
+                }else
+                {
+                    swap(pos, rightChild(pos));
+                    minHeapify(rightChild(pos));
+                }
+            }
+        }
+    }
+ 
+    public void insert(int element)
+    {
+        Heap[++size] = element;
+        int current = size;
+ 
+        while (Heap[current] < Heap[parent(current)])
+        {
+            swap(current,parent(current));
+            current = parent(current);
+        }	
+    }
+ 
+    public void print()
+    {
+        for (int i = 1; i <= size / 2; i++ )
+        {
+            System.out.print(" PARENT : " + Heap[i] + " LEFT CHILD : " + Heap[2*i] 
+                + " RIGHT CHILD :" + Heap[2 * i  + 1]);
+            System.out.println();
+        } 
+    }
+ 
+    public void minHeap()
+    {
+        for (int pos = (size / 2); pos >= 1 ; pos--)
+        {
+            minHeapify(pos);
+        }
+    }
+ 
+    public int remove()
+    {
+        int popped = Heap[FRONT];
+        Heap[FRONT] = Heap[size--]; 
+        minHeapify(FRONT);
+        return popped;
+    }
+ 
+    public static void main(String...arg)
+    {
+        System.out.println("The Min Heap is ");
+        MinHeap minHeap = new MinHeap(15);
+        minHeap.insert(5);
+        minHeap.insert(3);
+        minHeap.insert(17);
+        minHeap.insert(10);
+        minHeap.insert(84);
+        minHeap.insert(19);
+        minHeap.insert(6);
+        minHeap.insert(22);
+        minHeap.insert(9);
+        minHeap.minHeap();
+ 
+        minHeap.print();
+        System.out.println("The Min val is " + minHeap.remove());
+    }
+}
+
+
+$javac MinHeap.java
+$java MinHeap
+The Min Heap is 
+ PARENT : 3 LEFT CHILD : 5 RIGHT CHILD :6
+ PARENT : 5 LEFT CHILD : 9 RIGHT CHILD :84
+ PARENT : 6 LEFT CHILD : 19 RIGHT CHILD :17
+ PARENT : 9 LEFT CHILD : 22 RIGHT CHILD :10
+The Min val is 3
+Sanfoundry Global Education & Learning Series – 1000 Java Programs.
+
+If you wish to look at all Java Programming examples, go to Java Programs.
+« Prev Page - Java Program to Implement Max Heap
+» Next Page - Java Program to Check whether Graph is Biconnected
+4  2 
+Deep Dive @ Sanfoundry:
+Java Training I – Java Foundation Training
+Java Programming Examples on Hard Graph Problems & Algorithms
+Java Programming Examples on Graph Problems & Algorithms
+C Programming Examples on Trees
+Java Algorithms, Problems & Programming Examples
+100+ Java Android Programming Examples
+Java Programming Examples on Combinatorial Problems & Algorithms
+C Programming Examples on Data-Structures
+Java Programming Examples on Collection API
+Java Programming Examples on Data-Structures
+
+TEN TRIVIA QUESTIONS TO TEST YOUR ANDROID FANDOM
+  What was Android originally developed as a platform for?  Google's membership in this lets anyone modify Android source code.  Those Android version names have been released in what order?  What is the actual name of Google's Android mascot?  Co-creator Andy Rubin received the nickname "Android" for:  The first Android device, the T-Mobile G1, didn't have what?  Android OS was developed by Android Inc. What did Google pay for it?  Except Android 1.0 and 1.1, all versions are named after what?  Before the iPhone was revealed, what did the Android prototype have?  NASA equipped these space devices with Nexus S handsets.  15
+Laptops
+In-flight services
+Digital cameras
+Mobile Phones
+Open Handset Alliance
+Opensource History Association
+Open History Alliance
+Ontological Heroes Association
+Dessert colors following the rainbow
+Alphabetical
+Letters corresponding to digits in Pi
+Reverse alphabetical
+Steven
+Bugdroid
+Microbot
+Sally
+His love of robots
+His dislike of human interaction
+His skill at programming
+The number of "wearables" he wears
+Apps
+A keyboard
+Web-browsing capabilities
+3.5mm headset jack
+$10,000,000
+$5,000,000
+$1,000,000,000
+$50,000,000
+Desserts
+Fictional robots
+Species of cat
+Theme park rides
+Two screens
+A stylus
+Keypad buttons
+No home screen
+Telescopes
+Mars rovers
+Space-station fridges
+Bowling-ball sized robots
+START NEXT QUIZ
+ You Scored A Fair 5/10
+CHALLENGE
+YOUR FRIENDS  
+ NEXT QUIZ STARTS IN: 15
+ Your Score 0 Question 1/10  Add This Widget To Your Site
+Manish Bhojasia, a technology veteran with 20+ years @ Cisco & Wipro, is Founder and CTO at Sanfoundry. He is Linux Kernel Developer and SAN Architect and is passionate about competency developments in these areas. He lives in Bangalore and delivers focused training sessions to IT professionals in Linux Kernel, Linux Debugging, Linux Device Drivers, Linux Networking, Linux Storage & Cluster Administration, Advanced C Programming, SAN Storage Technologies, SCSI Internals and Storage Protocols such as iSCSI & Fiber Channel. Stay connected with him below:
+LinkedIn | Facebook | Twitter | Google+
+  by Taboola Sponsored Links 
+You May Like
+Only True John Wayne Fans Ace This Quiz - Can You?
+Zoo.com
+If You Own a Computer You Must Try This Game
+Pirates: Free Online Game
+You don't need a huge email list to drive sales
+The Business Journals with Constant Contact
+Subscribe Sanfoundry Newsletter and Posts
+
+
+Name*
+ 
+Email*
+ Subscribe
+Best Reference Books
+
+Computer Science Books
+Algorithm & Programming Books
+Electronics Engineering Books
+Electrical Engineering Books
+Chemical Engineering Books
+Civil Engineering Books
+Mechanical Engineering Books
+Industrial Engineering Books
+Instrumentation Engg Books
+Metallurgical Engineering Books
+All Stream Best Books
+Questions and Answers
+
+1000 C Questions & Answers
+1000 C++ Questions & Answers
+1000 C# Questions & Answers
+1000 Java Questions & Answers
+1000 Linux Questions & Answers
+1000 Python Questions
+1000 PHP Questions & Answers
+1000 Hadoop Questions
+Cloud Computing Questions
+Computer Science Questions
+All Stream Questions & Answers
+India Internships
+
+Computer Science Internships
+Instrumentation Internships
+Electronics Internships
+Electrical Internships
+Mechanical Internships
+Industrial Internships
+Systems Internships
+Chemical Internships
+Civil Internships
+IT Internships
+All Stream Internships
+About Sanfoundry
+
+About Us
+Copyright
+TOS & Privacy
+Jobs
+Bangalore Training
+Online Training
+SAN Training
+Developers Track
+Mentoring Sessions
+Contact Us
+Sitemap
+© 2011-2017 Sanfoundry 

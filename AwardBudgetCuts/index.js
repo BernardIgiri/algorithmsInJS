@@ -22,7 +22,7 @@ function awardBudgetCuts(grants, budget) {
 			break;
 		}
 	}
-	return [cap,proposedTotal];
+	return cap;
 }
 
 // 170

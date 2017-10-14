@@ -1,0 +1,47 @@
+function smallestSubstring(arr, str) {
+   let charMap = {};
+   for (let i=0; i<arr.length;i++) {
+      charMap[arr[i]]=true;
+   }
+   let foundChars = {};
+   let foundCharCount = 0;
+   let currentString = "";
+   let shortestString = null;
+   let charArray = str.split("");
+   let restartIndex = null;
+   for (let i=0; i<charArray.length; i++) {
+      let c = charArray[i];
+      if (charMap.hasOwnProperty(c)) {
+         currentString += c;
+         if (foundChars.hasOwnProperty(c)) {
+            if (restartIndex === null) {
+               restartIndex = i;
+            }
+            foundChars[c]++;
+         } else {
+            foundChars[c] = 1;
+            foundCharCount++;
+         }
+         if (foundCharCount === arr.length) {
+            if (shortestString === null ||
+                 currentString.length < shortestString.length) {
+               shortestString = currentString;
+            }
+            currentString = "";
+            foundChars = {};
+            foundCharCount = 0;
+            if (restartIndex !== null) {
+               i= restartIndex;
+            }
+         }
+      } else {
+         currentString = "";
+         foundChars = {};
+         foundCharCount = 0;
+         if (restartIndex !== null) {
+            i= restartIndex;
+         }
+      }
+   }
+   return shortestString;
+}

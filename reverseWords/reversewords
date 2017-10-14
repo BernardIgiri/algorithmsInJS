@@ -1,0 +1,58 @@
+/// [w1, w2, w3]
+// [w1]
+// [w2,w1]
+// [w3,w2,w1]
+function reverseWords(arr) {
+   var currentWord = "", wordsArray = [];
+   for (var i =0;i<arr.length;i++) {
+      var c = arr[i];
+      if (c === ' ') {
+         wordsArray.unshift(currentWord);
+         currentWord = "";
+      } else {
+         currentWord += c;
+      }
+   }
+   return wordsArray.join(' ').split("");
+}
+
+/*
+           1         2
+ 0123456789012345678901
+"perfect makes practice"
+7, 13, 22
+21
+perfect  7 - 0 = 7
+makes   13 - 7 - 1 = 5
+practice 22 - 13 -1 =  8
+
+*/
+
+function inplaceReverseWords(arr) {
+   for (var i=0,j=arr.length -1; i<j; i++, j--) {
+      var t = arr[i];
+      arr[i]=arr[j];
+      arr[j]=t;
+   }
+   var space=[];
+   for (var i=0; i<arr.length; i++) {
+      if (arr[i]===' ') {
+         space.push(i);
+      }
+   }
+   space.push(arr.length);
+   var previousIndex = 0;
+   for (var i=0;i<space.length;i++) {
+      var index = space[i];
+      var length = index - previousIndex;
+      for (var j=previousIndex,k=length -1;j<k; j++,k--) {
+         var t = arr[j];
+         arr[j]=arr[k];
+         arr[k]=t;
+      }
+      previousIndex = index -1;
+   }
+   return arr;
+}
+
+pramp();
