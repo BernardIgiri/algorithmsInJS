@@ -44,19 +44,6 @@ function autocomplete(fragment, tree) {
 		}
 	}
 }
-/*
-cup
-cop
-corn
-
-                 c
-           u          o
-          p         p   r
-	                  n
-
-
-
-*/
 
 var words = [
 	"apple",
